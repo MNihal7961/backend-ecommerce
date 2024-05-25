@@ -7,26 +7,62 @@ const CustomerSchema = new Schema({
     password: String,
     salt: String,
     phone: String,
-    address:[
+    address: [
         { type: Schema.Types.ObjectId, ref: 'address', require: true }
     ],
     cart: [
         {
-          product: { type: Schema.Types.ObjectId, ref: 'product', require: true},
-          unit: { type: Number, require: true}
+            product: {
+                _id: {
+                    type: String,
+                    required: true,
+                    price: Number
+                },
+                name: {
+                    type: String,
+                    required: true
+                },
+                price: Number
+            },
+            unit: {
+                type: Number,
+                required: true
+            }
         }
     ],
-    wishlist:[
-        { 
-            type: Schema.Types.ObjectId, ref: 'product', require: true
+    wishlist: [
+        {
+            _id: {
+                type: String,
+                required: true,
+                price: Number
+            },
+            name: {
+                type: String,
+                required: true
+            },
+            description: String,
+            available: Boolean,
+            price: Number
         }
     ],
-    orders: [ 
-        { type: Schema.Types.ObjectId, ref: 'order', require: true }
+    orders: [
+        {
+            _id: {
+                type: String,
+                required: true,
+                price: Number
+            },
+            amount: String,
+            date: {
+                type: Date,
+                default: Date.now()
+            }
+        }
     ]
-},{
+}, {
     toJSON: {
-        transform(doc, ret){
+        transform(doc, ret) {
             delete ret.password;
             delete ret.salt;
             delete ret.__v;
@@ -35,4 +71,4 @@ const CustomerSchema = new Schema({
     timestamps: true
 });
 
-module.exports =  mongoose.model('customer', CustomerSchema);
+module.exports = mongoose.model('customer', CustomerSchema);

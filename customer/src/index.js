@@ -13,7 +13,7 @@ const StartServer = async () => {
 
     app.listen(PORT, () => {
         console.log("Customer Service Running ✅")
-        console.log(`http://localhost:${8001}`)
+        console.log(`http://localhost:${PORT}`)
     })
         .on('error', (err) => {
             console.log(`Error in customer ❌: ${err.message}`)
