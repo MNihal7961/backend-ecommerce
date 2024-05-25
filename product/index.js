@@ -9,10 +9,10 @@ app.use('/', (req, res, next) => {
     return res.status(200).send({ message: "Product service ok ✅" })
 })
 
-app.listen(8001, () => {
+app.listen(8002, () => {
 
     console.log("Product Service Running ✅")
-    console.log(`http://localhost:${8001}`)
+    console.log(`http://localhost:${8002}`)
 
 }).on('error', (err) => {
 
