@@ -1,7 +1,6 @@
 const { ProductModel } = require("../models");
 const { APIError, BadRequestError } = require("../../utils/app-errors");
 
-//Dealing with data base operations
 class ProductRepository {
   async CreateProduct({
     name,
@@ -11,7 +10,6 @@ class ProductRepository {
     price,
     available,
     suplier,
-    banner,
   }) {
     try {
       const product = new ProductModel({
@@ -22,7 +20,6 @@ class ProductRepository {
         price,
         available,
         suplier,
-        banner,
       });
 
       const productResult = await product.save();
